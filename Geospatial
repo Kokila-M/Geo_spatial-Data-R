@@ -1,0 +1,44 @@
+library(dplyr)
+spatialData=read.csv("C:\\Users\\Raghul Devaraj\\Downloads\\New folder (2)\\worldcities.csv")
+View(spatialData)
+attach(spatialData)
+#selecting particular features
+spatial_df = spatialData[c(1,3,4,5,8,9)]
+unique(admin_name)
+#adding new column (vectorization)
+label_id = as.numeric(as.factor(admin_name))
+unique(label_id)
+names(spatial_df)
+library(leaflet)
+#applying colors
+getcolor = function(spatial_df)
+{
+ sapply(label_id,function(label_id) #call by reference [reference = label_id]
+ {
+ if(label_id == 1)
+ {
+ "pink"
+ }
+ else if(label_id == 2)
+ {
+ "red"
+ }
+ else if(label_id == 3)
+ {
+ "green"
+ }
+ else
+ {
+ "blue"
+ }
+ }
+ )
+}
+icons = awesomeIcons(icon="ios-close",iconColor = "blue", library = "ion",markerColor
+=getcolor(spatial_df))
+icons
+#calling leaflet functing to a r object.
+admin_name_map <- leaflet() %>%
+ addAwesomeMarkers(data = spatial_df, lat =lat, lng = lng,icon = icons,
+ popup = admin_name, label = capital) %>% addTiles(group ="OSM")
+admin_name_map
