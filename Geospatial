@@ -1,5 +1,5 @@
 library(dplyr)
-spatialData=read.csv("C:\\Users\\Raghul Devaraj\\Downloads\\New folder (2)\\worldcities.csv")
+spatialData=read.csv("C:\\Users\\Kokila M\\Downloads\\New folder (2)\\worldcities.csv")
 View(spatialData)
 attach(spatialData)
 #selecting particular features
